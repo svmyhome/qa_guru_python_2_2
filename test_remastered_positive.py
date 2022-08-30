@@ -32,35 +32,33 @@ def configure_desktop_browser(open_browser):
 
 def test_first_page_mobile_positive(configure_mobile_browser):
     browser.open('https://demoqa.com/automation-practice-form')
-    assert name_form == browser.element("//div[text()='Practice Form']").text
+    browser.element("//div[text()='Practice Form']").should(have.text(name_form))
     browser.element("//input[@id = 'firstName']").type(first_name)
     browser.element("//input[@id = 'lastName']").type(last_name)
     browser.element("//input[@id = 'userEmail']").type(user_email)
     browser.element("//label[text() = '" + gender + "']").click()
     browser.element("//input[@id = 'userNumber']").type(mobile).press_enter()
-    time.sleep(1)  #TODO разве селен не автоматический выставляет задержку
-    assert fill_in_form_title == browser.element("//div[@id='example-modal-sizes-title-lg']").text
-    assert student_name == browser.element("//td[text()='Student Name']/following-sibling::td").text
-    assert user_email == browser.element("//td[text()='Student Email']/following-sibling::td").text
-    assert gender == browser.element("//td[text()='Gender']/following-sibling::td").text
-    assert mobile == browser.element("//td[text()='Mobile']/following-sibling::td").text
+    browser.element("//div[@id='example-modal-sizes-title-lg']").should(have.text(fill_in_form_title))
+    browser.element("//td[text()='Student Name']/following-sibling::td").should(have.text(student_name))
+    browser.element("//td[text()='Student Email']/following-sibling::td").should(have.text(user_email))
+    browser.element("//td[text()='Gender']/following-sibling::td").should(have.text(gender))
+    browser.element("//td[text()='Mobile']/following-sibling::td").should(have.text(mobile))
     time.sleep(3)
 
 def test_first_page_desktop_positive(configure_desktop_browser):
     browser.open('https://demoqa.com/automation-practice-form')
-    assert name_form == browser.element("//div[text()='Practice Form']").text
+    browser.element("//div[text()='Practice Form']").should(have.text(name_form))
     browser.element("//input[@id = 'firstName']").type(first_name)
     browser.element("//input[@id = 'lastName']").type(last_name)
     browser.element("//input[@id = 'userEmail']").type(user_email)
     browser.element("//label[text() = '" + gender + "']").click()
     browser.element("//input[@id = 'userNumber']").type(mobile).press_enter()
-    time.sleep(1) #TODO разве селен не автоматический выставляет задержку
-    assert fill_in_form_title == browser.element("//div[@id='example-modal-sizes-title-lg']").text
-    assert student_name == browser.element("//td[text()='Student Name']/following-sibling::td").text
-    assert user_email == browser.element("//td[text()='Student Email']/following-sibling::td").text
-    assert gender == browser.element("//td[text()='Gender']/following-sibling::td").text
-    assert mobile == browser.element("//td[text()='Mobile']/following-sibling::td").text
-    time.sleep(3)
+    browser.element("//div[@id='example-modal-sizes-title-lg']").should(have.text(fill_in_form_title))
+    browser.element("//td[text()='Student Name']/following-sibling::td").should(have.text(student_name))
+    browser.element("//td[text()='Student Email']/following-sibling::td").should(have.text(user_email))
+    browser.element("//td[text()='Gender']/following-sibling::td").should(have.text(gender))
+    browser.element("//td[text()='Mobile']/following-sibling::td").should(have.text(mobile))
+    time.sleep(1)
 
 
 def test_second_page_mobile_positive(configure_mobile_browser):
@@ -76,8 +74,3 @@ def test_first_page_desktop_negative(configure_desktop_browser):
     browser.open('https://google.com')
     browser.element('//input[@title="Поиск"]').should(be.blank).type('selene1111').press_enter()
     browser.element('//div[@id="search"]').should(have.no.text(selene_name))
-
-def test_second_page_desktop_negative(configure_desktop_browser):
-    browser.open('https://google.com')
-    browser.element('//input[@title="Поиск"]').should(be.blank).type('selene1111').press_enter()
-    assert selene_name != browser.element('//div[@id="search"]').text
