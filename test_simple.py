@@ -2,14 +2,19 @@ import pytest
 
 @pytest.fixture()
 def open_browser():
-    print("Фикстура до вызова")
+    print("Фикстура 1 старт")
+    yield
+    print("Фикстура 1 конец")
 
 @pytest.fixture()
-def close_browser():
+def close_browser(open_browser):
+    print("Фикстура 2 старт")
     yield
-    print("после теста")
+    print("Фикстура 2 конец")
 
-def test_first(open_browser):
+
+
+def test_first(close_browser):
     assert 1 == 1
 
 
