@@ -45,7 +45,7 @@ def test_first_page_mobile_positive(configure_mobile_browser):
     browser.element("//td[text()='Mobile']/following-sibling::td").should(have.text(mobile))
     time.sleep(3)
 
-def test_first_page_desktop_positive(configure_desktop_browser):
+def test_first_page_desktop_positive(configure_desktop_browser): #TODO пределать под retern и возврат значений
     browser.open('https://demoqa.com/automation-practice-form')
     browser.element("//div[text()='Practice Form']").should(have.text(name_form))
     browser.element("//input[@id = 'firstName']").type(first_name)
