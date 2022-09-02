@@ -1,3 +1,7 @@
 # qa_guru_python_2_2
 
-Привет, мир
+## Python commands
+
+pytest --fixtures -- список всех используемых фикстур
+
+## Git commands 
