@@ -2,9 +2,9 @@
 # Вызовите ее внутри функций, описанных ниже
 # Подсказка: Имя функции можно получить с помощью func.__name__
 def print_name_function(function_name, *args):
-    name_func = function_name.__name__.split("_")
+    name_func = function_name.__name__.title().split("_")
     for i in range((len(name_func))):
-        print(name_func[i].title(), end=" ")
+        print(name_func[i], end=" ")
     print();
     for arg in args:
         print(arg.title())
