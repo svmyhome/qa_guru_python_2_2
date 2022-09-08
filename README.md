@@ -1,10 +1,14 @@
 # qa_guru_python_2_2
 
-## Python commands
+## Homeworks - папка для домашек
+
+## Learning - для повторения на уроках
+
+### Python commands
 
 pytest --fixtures -- список всех используемых фикстур
 
-## Git commands 
+### Git commands 
 
 ssh-keygen -t rsa  - создание ключевой пары для Ubuntu/MAc
 ssh-keygen -t ed25519 -C "svmyhome@mail.ru" - windows
